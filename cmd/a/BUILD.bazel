@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "a_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/jonny7/bazel-golang/cmd/a",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//logging",
+        "//version",
+    ],
+)
+
+go_binary(
+    name = "a",
+    embed = [":a_lib"],
+    visibility = ["//visibility:public"],
+    x_defs = {"github.com/jonny7/bazel-golang/version.Version": "{CREATION_STAMP}"},
+)
