@@ -20,10 +20,9 @@ jobs:
       #         restore-keys: |
       #           ${{ runner.os }}-${{ env.cache-name }}-some-other staging branch do this later
 
-
       - uses: actions/checkout@v3
       - name: Bazel Test
         run: bazel test //...
 
-      - name: Bazel Build
-        run: bazel build //...
+      - name: Bazel Build With Stamp
+        run: bazel build --stamp --workspace_status_command=$(pwd)/status.sh //...

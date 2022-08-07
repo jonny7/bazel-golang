@@ -27,8 +27,8 @@ bazel build --stamp --workspace_status_command=$(pwd)/status.sh //...
 ```
 8. Run the binaries
 ```shell
-bazel-out/darwin_arm64-fastbuild/bin/cmd/a/a_/a 
-bazel-out/darwin_arm64-fastbuild/bin/cmd/b/b_/b
-bazel-out/darwin_arm64-fastbuild/bin/cmd/c/c_/c
+bazel-bin/cmd/a/a_/a 
+bazel-bin/cmd/b/b_/b
+bazel-bin/cmd/c/c_/c
 ```
 9. Update a single binary and recheck the stamps
