@@ -1,0 +1,25 @@
+name: Bazel Build
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Bazel Cache
+        uses: actions/cache@v3
+        env:
+          cache-name: bazel-cache
+        with:
+          path: |
+            ~/.cache/bazelisk
+            ~/.cache/bazel
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ github.ref }}
+      #         restore-keys: |
+      #           ${{ runner.os }}-${{ env.cache-name }}-some-other staging branch do this later
+
+      - name: Build Bazel
+        uses: actions/checkout@v3
+        run: bazel build //...
