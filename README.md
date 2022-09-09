@@ -1,6 +1,6 @@
 # Overview
 
-Bazel with Go for Monorepos
+Bazel with Go for Monorepos.
 
 # Instructions
 1. Install Bazel
